@@ -1,0 +1,162 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="MIS.Master.vb" Inherits="MIS_HTI.MIS" %>
+<%@ Register assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" namespace="CrystalDecisions.Web" tagprefix="CR" %>
+<%@ Register src="../UserControl/HeaderForm.ascx" tagname="HeaderForm" tagprefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script type="text/javascript" src="../Scripts/datatable/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="../Scripts/datatable/jquery.dataTables.min.js"></script>
+    <link href="../Scripts/datatable/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="datatable.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="fontawesome/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Site.css"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+                body {
+            margin:0;
+            padding:0;
+            font-family:'Helverica',Arial,sans-serif;
+        }
+        .style2
+        {
+            width: 248px;
+            height: 83px;
+        }
+        .style3
+        {
+            width: 822px;
+            height: 83px;
+        }
+        .style4
+        {
+            width: 235px;
+            height: 29px;
+        }
+        .style5
+        {            
+            
+        }
+        .auto-style1 {
+            width: 266px;
+            height: 83px;
+        }
+        .auto-style2 {
+            width: 301px;
+        }
+        /*add new by noi at 2017-10-29 */
+        .navbar {
+            position:absolute;            
+            padding: 5px;
+            overflow: initial;
+            background: url(/Images/bg.jpg);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100px
+        }
+        /* .navbar a {
+                  float: left;
+                  display: block;
+                  color: #f2f2f2;
+                  text-align: center;
+                  padding: 14px 16px;
+                  text-decoration: none;
+                  font-size: 17px;
+                }*/
+        .mainMaster {
+            padding: 5px;
+            margin-top: 155px;
+            /* height: 1500px; Used in this example to enable scrolling */
+            width: 100%;
+            height: 100%;
+        }
+        </style>
+    <script src="../Scripts/jsScript.js" language="javascript" type="text/javascript"></script>
+   <%-- <script language="javascript" type="text/javascript">
+        window.onscroll = function() {myFunction()};
+
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            header.classList.add("sticky");
+          } else {
+            header.classList.remove("sticky");
+          }
+        }
+    </script>--%>
+</head>
+<body background="/Images/bg.jpg" style="width: 100%; height: 100%;">
+<form id="form1" runat="server">
+<div  class="navbar">
+<table class="TMASTER1">
+<tr>
+<td  background="/Images/logo.jpg" class="auto-style1" style="background-repeat: no-repeat;background-size: cover;  background-position: center center;">
+</td>
+<td  background="/Images/hd.jpg" class="style3" style="background-repeat: no-repeat;background-size: cover; background-position: center center;" >
+    <br />
+&nbsp;&nbsp;Group : 
+    <asp:Label ID="lbUserGroup" runat="server" 
+        ForeColor="#0066FF" Font-Bold="True" ></asp:Label>
+    <br />
+    &nbsp;&nbsp;Area:&nbsp;&nbsp;&nbsp; <asp:Label ID="lbArea" runat="server" 
+        ForeColor="#0066FF" Font-Bold="True" ></asp:Label>
+    <br />
+&nbsp;&nbsp;User :&nbsp;&nbsp; 
+    <asp:Label ID="login" runat="server" 
+        ForeColor="#0066FF" Font-Bold="True" ></asp:Label>
+&nbsp;&nbsp;
+    <br />
+    &nbsp;
+
+    
+                <asp:Label ID="Label2" runat="server" Text="Path"></asp:Label>
+    &nbsp;
+    <asp:Label ID="lbFile" runat="server" ForeColor="#0066FF"></asp:Label>
+
+    </td>
+
+</tr>
+<tr>
+<td colspan="2"   class="style4"  style="background-image: url('/Images/btt.jpg'); background-repeat: repeat; vertical-align: middle;"  >
+        <asp:Menu ID="mnMain" runat="server" BackColor="#F7F6F3" CssClass=""   
+        DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="1.1em" 
+         Orientation="Horizontal" StaticSubMenuIndent="10px" 
+        Font-Bold="True">
+        <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" Font-Size="Medium"  CssClass="" />
+        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" 
+            Font-Size="Medium"  CssClass="" />
+        <DynamicMenuStyle BackColor="#F7F6F3"   CssClass="" />
+        <DynamicSelectedStyle BackColor="#0099FF"   CssClass="" />
+        <StaticHoverStyle BackColor="#7C6F57" ForeColor="White"  CssClass="" />
+        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px"  CssClass="" />
+        <StaticSelectedStyle BackColor="#5D7B9D"  CssClass="" />
+    </asp:Menu>
+   </td>
+</tr>
+<tr>
+<td colspan="2"  >
+<asp:UpdateProgress ID="UpdateProgress1" runat="server">
+    <ProgressTemplate>
+        <asp:Image ID="Image" runat="server" ImageUrl="~/Images/loading.gif" />
+        <asp:Label ID="Label" runat="server" ForeColor="Blue" Text="Processing......"></asp:Label>
+    </ProgressTemplate>
+</asp:UpdateProgress>
+<uc1:HeaderForm ID="ucHeaderMasterPage" runat="server" />
+</td>
+</tr>
+</table>
+</div> 
+<div class="mainMaster">
+     <asp:ContentPlaceHolder id="MainContent" runat="server">         
+     </asp:ContentPlaceHolder>
+</div>
+</form>
+</body>
+</html>

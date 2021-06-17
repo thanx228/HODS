@@ -1,0 +1,24 @@
+ Response.Clear()
+        Response.AddHeader("content-disposition", "attachment;filename=EventMailingList.xls")
+        Response.Charset = "tis-620"
+        Response.ContentType = "application/vnd.ms-excel"
+        Dim ms As New System.IO.MemoryStream()
+        Dim streamWrite As New System.IO.StreamWriter(ms, Encoding.UTF8)
+        Dim htmlWrite As New System.Web.UI.HtmlTextWriter(streamWrite)
+        GridView2.RenderControl(htmlWrite)
+
+        Dim strEncodedHTML As String = Encoding.UTF8.GetString(ms.ToArray)
+        Response.Write(strEncodedHTML)
+        Response.End()
+
+
+
+<Triggers>
+		                 <asp:PostBackTrigger ControlID ="btExcel" />
+		                 <asp:AsyncPostBackTrigger ControlID="GridView2" EventName="RowCommand" />
+		        </Triggers>
+
+
+Public Overrides Sub VerifyRenderingInServerForm(ByVal control As Control)
+
+    End Sub

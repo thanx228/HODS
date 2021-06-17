@@ -1,0 +1,102 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="MIS_SUB.Master.vb" Inherits="MIS_HTI.MIS_SUB" %>
+<%@ Register assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" namespace="CrystalDecisions.Web" tagprefix="CR" %>
+
+<%@ Register src="../UserControl/HeaderForm.ascx" tagname="HeaderForm" tagprefix="uc1" %>
+<%@ Register Src="~/UserControl/HeaderForm.ascx" TagPrefix="uc2" TagName="HeaderForm" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+<link rel="stylesheet" type="text/css" href="Site.css"/>
+    <%--<link href="TosCss/MenuCss1.css" rel="stylesheet" />--%>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script type="text/javascript" src="../Scripts/datatable/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="../Scripts/datatable/jquery.dataTables.min.js"></script>
+    <link href="../Scripts/datatable/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="datatable.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="fontawesome/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Site.css"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style2
+        {
+            width: 248px;
+            height: 83px;
+        }
+        .style3
+        {
+            width: 822px;
+            height: 83px;
+        }
+        .style4
+        {
+            width: 235px;
+            height: 29px;
+        }
+        .style5
+        {            height: 1175px;
+        }
+        </style>
+    <script src="../Scripts/jsScript.js" language="javascript" type="text/javascript"></script>
+</head>
+<body background="/Images/bg.jpg" style="width: 100%; height: 100%;">
+<form id="form1" runat="server">
+<div style="width:100%;">
+<table>
+<tr>
+<td colspan="1"  background="/Images/logo.jpg" class="style2" 
+        style="background-repeat: no-repeat">
+
+    </td>
+
+<td colspan="1"  background="/Images/hd.jpg" class="style3" 
+        style="background-repeat: no-repeat" >
+    &nbsp;&nbsp;User : 
+    <asp:Label ID="login" runat="server" 
+        ForeColor="#0066FF" Font-Bold="True" ></asp:Label>
+
+    <br />
+&nbsp;&nbsp;Group : 
+    <asp:Label ID="lbUserGroup" runat="server" 
+        ForeColor="#0066FF" Font-Bold="True" ></asp:Label>
+
+    <br />
+    &nbsp;&nbsp;<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl ="../Login.aspx" 
+        Target="_parent" >Log Out</asp:HyperLink>
+
+&nbsp;&nbsp;
+    <br />
+    <br />
+    &nbsp;
+    <asp:Label ID="Label2" runat="server" Text="Path"></asp:Label>
+    &nbsp;
+    <asp:Label ID="lbFile" runat="server" ForeColor="#0066FF"></asp:Label>
+    </td>
+</tr>
+</table>
+</div>
+<div style="width:100%;">
+<asp:UpdateProgress ID="UpdateProgress1" runat="server">
+    <ProgressTemplate>
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/loading.gif" />
+        <asp:Label ID="Label1" runat="server" ForeColor="Blue" Text="Processing......"></asp:Label>
+    </ProgressTemplate>
+
+    </asp:UpdateProgress>
+    <uc2:HeaderForm runat="server" ID="ucHeaderPop" />
+<asp:ContentPlaceHolder id="MainContent" runat="server">
+    
+</asp:ContentPlaceHolder>
+</div>
+
+
+
+</form>
+</body>
+
+</html>

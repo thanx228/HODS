@@ -1,0 +1,108 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="MIS2.master.vb" Inherits="MIS_HTI.MIS2" %>
+<%@ Register assembly="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" namespace="CrystalDecisions.Web" tagprefix="CR" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+<link rel="stylesheet" type="text/css" href="../Styles/Site.css">
+
+    <title>ERP REPORT</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style2
+        {            height: 26px;
+        }
+        .style3
+        {
+            width: 553px;
+        }
+        .style4
+        {
+        }
+        .style5
+        {
+            width: 120px;
+        }
+    </style>
+    <script src="../Scripts/jquery-1.9.1.min.js" language="javascript" type="text/javascript"></script>
+    <script src="../Scripts/jsScript.js" language="javascript" type="text/javascript"></script>
+</head>
+<body background="/Images/bg.jpg" style="width: 1136px">
+<form id="form1" runat="server">
+<div style="width:100%">
+<table class="TMASTER">
+<tr>
+
+<td height="90px" colspan="1"  background="/Images/logo.jpg" class="style5" 
+        style="background-repeat: no-repeat">
+
+    <br />
+    </td>
+
+<td colspan="1"  background="/Images/hd.jpg" class="style3" 
+        style="background-repeat: no-repeat" >
+    &nbsp;&nbsp;&nbsp; User : <asp:Label ID="login" runat="server" Text="Label" 
+        ForeColor="#0066FF" Font-Bold="True" ></asp:Label>
+
+    <br />
+&nbsp;&nbsp; User Group : 
+    <asp:Label ID="lbUserGroup" runat="server" Text="Label" 
+        ForeColor="#0066FF" Font-Bold="True" ></asp:Label>
+
+    <br />
+&nbsp;&nbsp;
+
+<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl ="../LogOut.aspx" 
+        Target="_parent" >Log Out</asp:HyperLink></td>
+</tr>
+
+<tr>
+
+<td colspan="2"  class="style2" 
+        style="background-image: url('/Images/btt.jpg'); background-repeat: repeat">
+
+    <asp:Menu ID="mnMain" runat="server" BackColor="#F7F6F3" 
+        DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="1.1em" 
+        ForeColor="#7C6F57" Orientation="Horizontal" StaticSubMenuIndent="10px" 
+        Font-Bold="True" ItemWrap="True">
+        <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" Font-Size="Medium" />
+        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" 
+            Font-Size="Medium" />
+        <DynamicMenuStyle BackColor="#F7F6F3" />
+        <DynamicSelectedStyle BackColor="#5D7B9D" />
+        <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+        <StaticSelectedStyle BackColor="#5D7B9D" />
+    </asp:Menu>
+    &nbsp;</td>
+
+</tr>
+
+<tr>
+
+<td height="500px" align="justify" class="style4" 
+        
+        style="caption-side: top; vertical-align: top; background-repeat: no-repeat;" 
+        colspan="2">
+
+    <asp:ContentPlaceHolder id="MainContent" runat="server">
+ 
+</asp:ContentPlaceHolder>
+
+
+    </td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+
+</form>
+</body>
+
+</html>
